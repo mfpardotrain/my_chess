@@ -26,11 +26,14 @@ export class Pawn extends ChessPiece {
             return false
         }
         let collides = (arr) => boardState.filter(el => el.col === col && arr.includes(row - el.row))
-        let attacks = boardState.filter(el => el.row == row && el.col === col && el.color !== this.color)
+
+        let attacks = this.color === "white" ?
+            boardState.filter(el => el.row === row && el.col === col && el.color !== this.color && el.row < this.row) :
+            boardState.filter(el => el.row === row && el.col === col && el.color !== this.color && el.row > this.row)
 
         if ([1, -1].includes(colDiff) && [-1, 1].includes(rowDiff)) {
             if (attacks.length > 0) {
-                if([0, 7].includes(row) && !test) {
+                if ([0, 7].includes(row) && !test) {
                     this.queenMe(row, col, boardState)
                 }
                 attacks[0].setTaken(test)
@@ -40,7 +43,7 @@ export class Pawn extends ChessPiece {
         }
 
         if ([-1, -2, 1, 2].includes(rowDiff) && colTrue) {
-            if([0, 7].includes(row) && !test && collides([0]).length === 0) {
+            if ([0, 7].includes(row) && !test && collides([0]).length === 0) {
                 this.queenMe(row, col, boardState)
                 return true
             }

@@ -19,8 +19,6 @@ export class King extends ChessPiece {
                     if (col < 2) {
                         let test = whitePieces.filter(el => el.validSquares(0, i, boardState, true))
                         let path = blackPieces.filter(el => el.row === 0 && el.col === i && el.name !== "\u265C")
-                        console.log(test)
-                        console.log(path)
                         if (test.length > 0 || path.length > 0) {
                             blocked.push(false)
                         } else {
@@ -30,8 +28,6 @@ export class King extends ChessPiece {
                     if (col > 5) {
                         let test = whitePieces.filter(el => el.validSquares(0, i + 5, boardState, true))
                         let path = blackPieces.filter(el => el.row === 0 && el.col === i + 5 && el.name !== "\u265C")
-                        console.log(path)
-                        console.log(test)
                         if (test.length > 0 || path.length > 0) {
                             blocked.push(false)
                         } else {
@@ -53,8 +49,6 @@ export class King extends ChessPiece {
                     if (col > 5) {
                         let test = blackPieces.filter(el => el.validSquares(7, i + 5, boardState, true))
                         let path = whitePieces.filter(el => el.row === 7 && el.col === i + 5 && el.name !== "\u2656")
-                        console.log(test)
-                        console.log(path)
                         if (test.length > 0 || path.length > 0) {
                             blocked.push(false)
                         } else {

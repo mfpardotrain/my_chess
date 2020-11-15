@@ -50,7 +50,6 @@ const Board = (props) => {
                     ["\u265C", "\u2656"].includes(el.name) &&
                     el.row === pieceInfo[2].row &&
                     el.col === pieceInfo[2].col)[0]
-                console.log(rook)
                 boardInfo.selectedPiece.setPosition(kingPos.row, kingPos.col)
                 rook.setPosition(rookPos.row, rookPos.col)
                 boardInfo.pieces.map(el => el.testIsChecked(boardInfo.pieces.filter(el => !el.taken)))
